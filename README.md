@@ -1,5 +1,5 @@
 # Welcome to the IPDGC/ GP2 Hackathon: Colocalization Pipeline 
-#### Devina Chetty, Shilpa Rao, Konstantin Senkevish, Prabhjyot Saini, Pau Reyes, Will Scotton, Anni Moore
+#### Devina Chetty, Shilpa Rao, Konstantin Senkevich, Prabhjyot Saini, Pau Reyes P, Will Scotton, Anni Moore
 
 &nbsp;  
 
