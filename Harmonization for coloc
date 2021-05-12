@@ -1,0 +1,73 @@
+R
+require(data.table)
+library(data.table)  
+library(dplyr)
+library(dbplyr)
+
+PD_GWAS<-fread("PD_GWAS_sumstats.txt")
+
+# Get +-500kb window around independent loci, detected in GCTA-COJO - P.S. run COJO beforehand for the region of interest to detect independent top hits.
+rs1_bp <- chr4_PD[chr4_PD$rsID == "rs1", ]$bp
+rs2_bp <- chr4_PD[chr4_PD$rsID == "rs2", ]$bp
+
+selected_region <- chr4_PD %>% 
+  filter(bp >= rs1_bp - 500000 & bp <= rs2_bp + 500000)
+
+
+v <- chr14_PD %>% 
+  mutate(s = N_cases / (N_cases + N_controls)) #%>% 
+#dplyr::select(rsID, A1, A2, freq, b, se, p, bp, s) %>%  
+#dplyr::rename(SNP = rsID)
+
+
+# Check for complete cases
+selected_region[!complete.cases(selected_region), ]
+
+# Make varBetas - its simply requested by the package 
+GALC_gwas$varbeta = GALC_gwas$se*GALC_gwas$se
+
+# Check for duplicates
+n_duplicates <- 
+  selected_region %>% 
+  dplyr::filter(duplicated(SNP) | duplicated(SNP, fromLast = TRUE)) %>% 
+  .[["SNP"]] %>% 
+  unique() %>% 
+  length()
+
+#Check for beta 0
+n_beta_zero <- 
+  selected_region %>% 
+  dplyr::filter(b == 0) %>% 
+  .[["SNP"]] %>% 
+  unique() %>% 
+ length()
+
+
+# Get rid of a SNP with beta == 0
+selected_region_1 <- selected_region[selected_region$beta != 0, ]
+
+# Find MA beta and MAF
+selected_region_1$b_MA <- selected_region_1$beta
+selected_region_1[selected_region_1$freq > 0.50, ]$b_MA <- selected_region_1[selected_region_1$freq > 0.50, ]$b_MA *-1
+
+selected_region_1$MAF <- selected_region_1$freq
+selected_region_1[selected_region_1$freq > 0.50, ]$MAF <- 1 - selected_region_1[selected_region_1$freq > 0.50, ]$MAF
+# Read reference eQTL data
+
+eQTL <- read.table("selected_QTL.txt", sep = '\t', header = T, stringsAsFactors = TRUE)
+
+selected_region_QTL <- eQTL %>% filter(BP >= 4000000 & BP <= 4500000 )
+
+#change names
+selected_region_QTL$b_MA <- selected_region_QTL$b
+
+selected_region_QTL[selected_region_QTL$Freq > 0.50, ]$b_MA <- selected_region_QTL[selected_region_QTL$Freq > 0.50, ]$b_MA *-1
+selected_region_QTL$MAF <- selected_region_QTL$Freq
+
+selected_region_QTL[selected_region_QTL$Freq > 0.50, ]$MAF <- 1 - selected_region_QTL[selected_region_QTL$Freq > 0.50, ]$MAF
+selected_region_QTL$varbeta = selected_region_QTL$SE*selected_region_QTL$SE
+
+####rename if needed
+selected_region_QTL <- selected_region_QTL %>% 
+  dplyr::select(SNP, A1, BP, A2, Freq, Gene, BP, b, SE, p, MAF, varbeta, b_MA)
+selected_region_QTL <- selected_region_QTL[complete.cases(selected_region_QTL), ]
