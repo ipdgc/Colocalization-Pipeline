@@ -16,9 +16,9 @@ library(data.table)
 library(dplyr)
 library(dbplyr)
 library(devtools)
-library(coloc)
+#library(coloc)
 library(RCurl)
-
+library(tidyr)
 
 ## Getting necessary data
 ###load eQTLGen whole blood cis-eQTL results
@@ -38,13 +38,13 @@ download.file(url=url,
 
 ###input files
 ##GWAS summary
-gwas_file <- '/labshare/anni/ipdgc/coloc/nallsEtAl2019_excluding23andMe_allVariants.tab'
+gwas_file <- '/labshare/anni/ipdgc/coloc/example_data/nallsEtAl2019_excluding23andMe_allVariants.tab'
 
 ##eQTL summary
 #whole blood
 eqtl_file <- '/labshare/anni/eqtl/eQTLGen/cis-eQTLs-full_eQTLGen_AF_incl_nr_formatted_20191212.new.txt_besd-dense.txt'
 ##substantia nigra
-#eqtl <- '/labshare/anni/ipdgc/coloc/GTEx_Analysis_v8_eQTL/Brain_Substantia_nigra.v8.egenes.txt.gz'
+#eqtl_file <- '/labshare/anni/ipdgc/coloc/GTEx_Analysis_v7_eQTL/Brain_Substantia_nigra.v7.egenes.txt.gz'
 
 
 ##variables
@@ -53,6 +53,8 @@ goi_lower <- 4000000
 goi_upper <- 4500000
 
 gwas_df <- fread(gwas_file, header=TRUE)
+gwas_df$SNP2 <- gwas_df$SNP
+gwas_df <- separate(gwas_df, col = SNP2, into = c("chr","bp"), sep = ":")
 head(gwas_df)
 
 ##get region of interest
@@ -92,6 +94,13 @@ n_beta_zero <-
 selected_region_1 <- selected_region[selected_region$beta != 0, ]
 
 eQTL <- fread(eqtl_file, header=TRUE)
+##check 
+eQTL$SNP <- paste(eQTL$Chr, ":", eQTL$BP)
+eQTL$SNP <- paste("chr", eQTL$SNP)
+
+head(eQTL)
+
+
 selected_region_QTL <- eQTL %>% filter(BP >= goi_lower & BP <= goi_upper)
 
 #change names
