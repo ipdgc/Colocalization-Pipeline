@@ -1,6 +1,5 @@
-.markdown-block {  
-    background: grey;  
-}
+### GitLab Orange Heading
+{: .gitlab-orange}
 
 # Welcome to the IPDGC/ GP2 Hackathon: Colocalization Pipeline  
 
