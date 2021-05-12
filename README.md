@@ -15,13 +15,16 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 ![image](https://user-images.githubusercontent.com/84042456/117987145-82458000-b33a-11eb-99d4-1e3573a14276.png)  
 
 &nbsp;
+
 ## Coloc vs SMR vs HEIDI  
-* Coloc
-    *Assumes a single causal variant 
-    *Reduced power in the presence of multiple causal variants
-* SMR
-    *Integrates eQTL results to determine target genes of complex trait-associated GWAS loci
-    *Derives an approximate X2-statistic for the mediating effect of the target gene expression on the phenotype
-* HEIDI (Heterogeneity) test
-    To distinguish between pleiotropy and linkage
-    Top associated cis-eQTL in linkage disequilibrium with two distinct causal variants - one affected gene expression and the other affecting trait variation 
+&nbsp;
+
+* Coloc  
+    Assumes a single causal variant  
+    Reduced power in the presence of multiple causal variants  
+* SMR  
+    Integrates eQTL results to determine target genes of complex trait-associated GWAS loci  
+    Derives an approximate X2-statistic for the mediating effect of the target gene expression on the phenotype  
+* HEIDI (Heterogeneity) test  
+    To distinguish between pleiotropy and linkage  
+    Top associated cis-eQTL in linkage disequilibrium with two distinct causal variants - one affected gene expression and the other affecting trait variation  
