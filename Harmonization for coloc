@@ -4,20 +4,27 @@ library(data.table)
 library(dplyr)
 library(dbplyr)
 
+####read selected PD summary stats
 PD_GWAS<-fread("PD_GWAS_sumstats.txt")
 
-# Get +-500kb window around independent loci, detected in GCTA-COJO - P.S. run COJO beforehand for the region of interest to detect independent top hits.
+####run COJO for gene of interest to detect independent hits
+gcta64  --bfile test  --chr 4 --maf 0.01 --cojo-file test.ma --cojo-slct --cojo-p 5e-5--out test_chr1
+
+### Get +-500kb window around independent loci, detected in GCTA-COJO - P.S. run COJO beforehand for the region of interest to detect independent top hits
+### Below the example of region selection for two independent hits. Could be more or less. Or simply select +/- 500kb outside of the gene of interest
 rs1_bp <- chr4_PD[chr4_PD$rsID == "rs1", ]$bp
 rs2_bp <- chr4_PD[chr4_PD$rsID == "rs2", ]$bp
 
 selected_region <- chr4_PD %>% 
   filter(bp >= rs1_bp - 500000 & bp <= rs2_bp + 500000)
 
-
-v <- chr14_PD %>% 
+#add v -requested by the package
+v <- chr4_PD %>% 
   mutate(s = N_cases / (N_cases + N_controls)) #%>% 
-#dplyr::select(rsID, A1, A2, freq, b, se, p, bp, s) %>%  
-#dplyr::rename(SNP = rsID)
+#mind the names
+dplyr::select(rsID, A1, A2, freq, b, se, p, bp, s) %>%  
+#rename if needed
+dplyr::rename(SNP = rsID)
 
 
 # Check for complete cases
@@ -46,7 +53,7 @@ n_beta_zero <-
 # Get rid of a SNP with beta == 0
 selected_region_1 <- selected_region[selected_region$beta != 0, ]
 
-# Find MA beta and MAF
+# Find MA beta and MAF - swap beta and MAF if presented for major allele to make it consistent
 selected_region_1$b_MA <- selected_region_1$beta
 selected_region_1[selected_region_1$freq > 0.50, ]$b_MA <- selected_region_1[selected_region_1$freq > 0.50, ]$b_MA *-1
 
@@ -71,3 +78,6 @@ selected_region_QTL$varbeta = selected_region_QTL$SE*selected_region_QTL$SE
 selected_region_QTL <- selected_region_QTL %>% 
   dplyr::select(SNP, A1, BP, A2, Freq, Gene, BP, b, SE, p, MAF, varbeta, b_MA)
 selected_region_QTL <- selected_region_QTL[complete.cases(selected_region_QTL), ]
+
+
+###as an output we have two files ready for coloc - 1) selected GWAS region and selected QTL region
