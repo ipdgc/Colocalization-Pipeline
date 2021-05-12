@@ -36,10 +36,12 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 For the GWAS summary stats we will use **Nalls et al. 2019**  
 &nbsp;
 &nbsp;
+&nbsp;
 ![image](https://user-images.githubusercontent.com/64213922/118001110-6b8c3280-b314-11eb-87c1-4b1006ce4fbd.png)
 &nbsp;  
 
 For the eQTLs we will use **eQTLGen.**  
+&nbsp;
 &nbsp;
 &nbsp;
 ![image](https://user-images.githubusercontent.com/64213922/118001201-7f379900-b314-11eb-8b03-764233e5114f.png)
