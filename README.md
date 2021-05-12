@@ -38,7 +38,7 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 &nbsp;
 &nbsp;
 
-## Links to tools we used
+## Links to tools we used/will use
 * 1.  https://www.eqtlgen.org/  
 * 2. https://pubmed.ncbi.nlm.nih.gov/31701892/ (Identification of novel risk loci, causal insights, and heritable risk for Parkinson's disease: a meta-analysis of genome-wide association studies - PubMed)  
 * 3. https://github.com/chr1swallace/coloc (Repo for the R package coloc)  
@@ -48,5 +48,5 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 
 ## Problems so far
 
-* 1. Couldnt load cloud environment (error)
-* 2. CPU issues where kernel error would generate if CPU wasnt high enough, but when increased we would not have the running cloud environment
+* 1. Couldn't load cloud environment (error)
+* 2. CPU issues where kernel error would generate if CPU wasn't high enough, but when increased we would not have the running cloud environment
