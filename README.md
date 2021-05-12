@@ -1,4 +1,4 @@
-### GitLab Orange Heading
+### GitLab Orange Heading  
 {: .gitlab-orange}
 
 # Welcome to the IPDGC/ GP2 Hackathon: Colocalization Pipeline  
