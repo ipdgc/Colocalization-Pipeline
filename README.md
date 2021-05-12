@@ -1,6 +1,3 @@
-### GitLab Orange Heading  
-{: .gitlab-orange}
-
 # Welcome to the IPDGC/ GP2 Hackathon: Colocalization Pipeline  
 
 &nbsp;  
@@ -32,3 +29,8 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 * HEIDI (Heterogeneity) test  
     1. To distinguish between pleiotropy and linkage  
     2. Top associated cis-eQTL in linkage disequilibrium with two distinct causal variants - one affected gene expression and the other affecting trait variation  
+
+&nbsp;
+&nbsp;
+
+Our code so far:  
