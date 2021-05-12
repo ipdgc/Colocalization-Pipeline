@@ -1,3 +1,9 @@
+##at harmonization step we prepare two files
+# 1)selected_region =  selected GWAS region
+# 2)selected_QTL = selected matching QTL region
+
+library(coloc)
+
 #### merge pre-prepared cleaned summary stats
 
 df <- dplyr::inner_join(selected_region, selected_region_QTL, by = "SNP", suffix = c(".gwas", ".eqtl"))
