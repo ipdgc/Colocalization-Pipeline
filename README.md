@@ -14,7 +14,7 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 ![image](https://user-images.githubusercontent.com/84042456/117986308-cbe19b00-b339-11eb-8f90-3f33959f0a12.png)  
 &nbsp;  
 ![image](https://user-images.githubusercontent.com/84042456/117987145-82458000-b33a-11eb-99d4-1e3573a14276.png)  
-&nbsp;
+
 &nbsp;
 &nbsp;
 
@@ -30,28 +30,22 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 * eQTpLot
     1. Visualization of colocalization between eQTL and GWAS data  
     2. Comprehensive plots of colocalization between GWAS and eQTL signals and correlation between GWAS and eQTL p-values
+    It provides visual information of effect size, direction of the effect, and distinguishes between congrous and incongrous effects
+
+![image](https://www.biorxiv.org/content/biorxiv/early/2021/02/15/2020.08.26.268268/F1.large.jpg)
 
 &nbsp;
-## Summary Stats
-For the GWAS summary stats we will use **Nalls et al. 2019**  
-&nbsp;
-&nbsp;
-&nbsp;
-![image](https://user-images.githubusercontent.com/64213922/118001110-6b8c3280-b314-11eb-87c1-4b1006ce4fbd.png)
-&nbsp;  
-
-For the eQTLs we will use **eQTLGen.**  
-&nbsp;
-&nbsp;
-&nbsp;
-![image](https://user-images.githubusercontent.com/64213922/118001201-7f379900-b314-11eb-8b03-764233e5114f.png)
 &nbsp;
 
+## Links to tools we used
+* 1.  https://www.eqtlgen.org/  
+* 2. https://pubmed.ncbi.nlm.nih.gov/31701892/ (Identification of novel risk loci, causal insights, and heritable risk for Parkinson's disease: a meta-analysis of genome-wide association studies - PubMed)  
+* 3. https://github.com/chr1swallace/coloc (Repo for the R package coloc)  
 
-* Coloc  
+&nbsp;
+&nbsp;
 
- H0: neither trait has a genetic association in the region
- H1: only trait 1 has a genetic association in the region
- H2: only trait 2 has a genetic association in the region
- H3: both traits are associated, but with different causal variants
- H4: both traits are associated and share a single causal variant
+## Problems so far
+
+* 1. Couldnt load cloud environment (error)
+* 2. CPU issues where kernel error would generate if CPU wasnt high enough, but when increased we would not have the running cloud environment
