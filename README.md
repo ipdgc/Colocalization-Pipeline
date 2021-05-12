@@ -1,4 +1,4 @@
-# Welcome to the IPDGC/ GP2 Hackathon: Colocalization Pipeline 
+# IPDGC/GP2 Hackathon 2021: Colocalization Pipeline 
 #### Devina Chetty, Shilpa Rao, Konstantin Senkevich, Prabhjyot Saini, Pau Reyes P, Will Scotton, Anni Moore
 
 &nbsp;  
