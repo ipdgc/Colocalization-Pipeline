@@ -1,7 +1,7 @@
 # Welcome to the IPDGC/ GP2 Hackathon: Colocalization Pipeline
-\
-\
-\
+\.
+\.
+\.
 ## What is _coloc_?
 \
 **Colocalization** is an analysis to test if the **effect size of a SNP** on the phenotype is mediated by **gene expression**
