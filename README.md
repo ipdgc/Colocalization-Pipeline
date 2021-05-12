@@ -18,7 +18,7 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 &nbsp;
 &nbsp;
 
-## Methods: Coloc vs SMR vs HEIDI  
+## Methods: Coloc vs SMR vs eQTpLot  
 &nbsp;
 
 * Coloc  
@@ -27,9 +27,9 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 * SMR  
     1. Integrates eQTL results to determine target genes of complex trait-associated GWAS loci  
     2. Derives an approximate X2-statistic for the mediating effect of the target gene expression on the phenotype  
-* HEIDI (Heterogeneity) test  
-    1. To distinguish between pleiotropy and linkage  
-    2. Top associated cis-eQTL in linkage disequilibrium with two distinct causal variants - one affected gene expression and the other affecting trait variation  
+* eQTpLot
+    1. Visualization of colocalization between eQTL and GWAS data  
+    2. Comprehensive plots of colocalization between GWAS and eQTL signals and correlation between GWAS and eQTL p-values
 
 &nbsp;
 &nbsp;
