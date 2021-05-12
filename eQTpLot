@@ -1,0 +1,24 @@
+R
+##This requires R 4.0 or higher
+#Required libraries
+install.packages(c("biomaRt", "dplyr", "GenomicRanges", "ggnewscale", "ggplot2", "ggplotify", "ggpubr", "gridExtra", "Gviz", "LDheatmap", "patchwork"))
+install.packages(c("devtools","stringi","BiocManager"))
+install.packages("xfun")
+library(usethis)
+library(devtools)
+library(BiocManager)
+library(ggplot2)
+library(stringi)
+##if any of these installations returns an error, try to install by BiocManager::install(¨¨)
+
+
+#Installation of eQTpLot
+Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS=TRUE)
+devtools::install_github("RitchieLab/eQTpLot")
+library(eQTpLot)
+
+#needed inputs
+#We need at least and eQTL and a GWAS summary statistics file
+#
+
+
