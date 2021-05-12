@@ -1,3 +1,7 @@
+.markdown-block {
+    background: grey;
+}
+
 # Welcome to the IPDGC/ GP2 Hackathon: Colocalization Pipeline  
 
 &nbsp;  
@@ -14,6 +18,7 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 &nbsp;  
 ![image](https://user-images.githubusercontent.com/84042456/117987145-82458000-b33a-11eb-99d4-1e3573a14276.png)  
 
+&nbsp;
 &nbsp;
 
 ## Coloc vs SMR vs HEIDI  
