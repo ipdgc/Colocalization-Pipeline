@@ -1,8 +1,9 @@
-# Welcome to the IPDGC/ GP2 Hackathon: Colocalization Pipeline  
+# Welcome to the IPDGC/ GP2 Hackathon: Colocalization Pipeline 
+#### Devina Chetty, Shilpa Rao, Konstantin Senkevish, Prabhjyot Saini, Pau Reyes, Will Scotton, Anni Moore
 
 &nbsp;  
 
-## What is _coloc_?  
+## What is _colocalization_?  
 **Colocalization** is an analysis to test if the **effect size of a SNP** on the phenotype is mediated by **gene expression**.  
 This tool can be used to prioritize genes underlying **GWAS hits**  
 
@@ -17,7 +18,7 @@ This tool can be used to prioritize genes underlying **GWAS hits**
 &nbsp;
 &nbsp;
 
-## Coloc vs SMR vs HEIDI  
+## Methods: Coloc vs SMR vs HEIDI  
 &nbsp;
 
 * Coloc  
