@@ -1,5 +1,5 @@
-.markdown-block {
-    background: grey;
+.markdown-block {  
+    background: grey;  
 }
 
 # Welcome to the IPDGC/ GP2 Hackathon: Colocalization Pipeline  
