@@ -1,24 +1,81 @@
 R
 ##This requires R 4.0 or higher
-#Required libraries
-install.packages(c("biomaRt", "dplyr", "GenomicRanges", "ggnewscale", "ggplot2", "ggplotify", "ggpubr", "gridExtra", "Gviz", "LDheatmap", "patchwork"))
-install.packages(c("devtools","stringi","BiocManager"))
-install.packages("xfun")
-library(usethis)
+
+
+##load necessary packages
+library(data.table)  
+library(dplyr)
+library(dbplyr)
 library(devtools)
+library(tidyr)
 library(BiocManager)
 library(ggplot2)
 library(stringi)
-##if any of these installations returns an error, try to install by BiocManager::install(¨¨)
-
-
-#Installation of eQTpLot
-Sys.setenv(R_REMOTES_NO_ERRORS_FROM_WARNINGS=TRUE)
-devtools::install_github("RitchieLab/eQTpLot")
 library(eQTpLot)
+library(ggnewscale)
+library(patchwork)
+library(Gviz)
+library(GenomicRanges)
+library(biomaRt)
+library(ggpubr)
+library(LDheatmap)
+library(ggplotify)
+library(gridExtra)
+require(data.table)
+library(reshape2)
+library(tibble)
 
 #needed inputs
 #We need at least and eQTL and a GWAS summary statistics file
-#
 
+
+#Formatting of GWAS file
+gwas_df <- read.csv(file="data/gwas_DYRK1A.csv", header = T, sep = ",")
+glimpse(gwas_df)
+gwas_df<-  dplyr::select(gwas_df, 1,17,10,8)
+gwas_df[ , 5:6] <- str_split_fixed(gwas_df$MarkerName, ":", 2)
+gwas_df<-  dplyr::select(gwas_df, 5,6, 2:4)
+
+colnames(gwas_df)[1] <- "CHR"
+colnames(gwas_df)[2] <- "BP"
+colnames(gwas_df)[3] <- "SNP"
+colnames(gwas_df)[4] <- "P"
+colnames(gwas_df)[5] <- "BETA"
+gwas_df <- gwas_df %>%
+  add_column(PHE = 'PD',
+             .after = "BETA")
+
+gwas_df$CHR <-gsub('chr','',gwas_df$CHR)
+gwas_df$CHR <- as.integer(gwas_df$CHR)
+
+gwas_df$BP <-as.integer(gwas_df$BP)
+
+
+#Formatting of eqtl file
+
+
+eqtl_df <- read.csv(file="data/eqtl_DYRK1A.csv", header = T, sep = ",")
+glimpse(eqtl_df)
+eqtl<-  dplyr::select(eqtl_df, 3,6,8,10)
+colnames(eqtl)[1] <- "SNP.Id"
+colnames(eqtl)[2] <- "Gene.Symbol"
+colnames(eqtl)[3] <- "P.Value"
+colnames(eqtl)[4] <- "NES"
+
+eqtl <- eqtl %>%
+  add_column(Tissue = "Brain",
+             .after = "NES")
+
+#Verifying that everything is as needed 
+
+head(gwas_df)
+str(gwas_df)
+
+str(eqtl_df)
+head(eqtl_df)
+
+
+#Running eQTpLot
+
+eQTpLot(GWAS.df = gwas_df, eQTL.df = eqtl, gene ="DYRK1A", gbuild = "hg19", trait = "PD", tissue = "Brain", CollapseMethod = "max", range=500)
 
