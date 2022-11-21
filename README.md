@@ -1,52 +1,114 @@
-# IPDGC/GP2 Hackathon 2021
-## Project 2: Colocalization Pipeline 
-#### Shilpa Rao, Konstantin Senkevich, Prabhjyot Saini, Paula Reyes P, Will Scotton, Anni Moore & Devina Chetty
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src="images/GP2_logo.png" alt="Logo" width="300" height="70">
+  </a>
 
-&nbsp;  
+<h3 align="center">Colocalization pipeline</h3>
 
-## What is _colocalization_?  
-**Colocalization** is an analysis to test if the **effect size of a SNP** on the phenotype is mediated by **gene expression**.  
-This tool can be used to prioritize genes underlying **GWAS hits**  
+  <p align="center">
+    One of the projects from the 2021 GP2/IPDGC Hackathon. The related manuscript can be found on [biorxiv](https://www.biorxiv.org/content/10.1101/2022.05.04.490670v1) 
+    <br />
+    Contributers: Shilpa Rao, Konstantin Senkevich, Prabhjyot Saini, Paula Reyes P, Will Scotton, Anni Moore, Devina Chetty
+    <br />
+  </p>
+</div>
 
-&nbsp;  
-&nbsp;  
-&nbsp;  
 
-![image](https://user-images.githubusercontent.com/84042456/117986308-cbe19b00-b339-11eb-8f90-3f33959f0a12.png)  
-&nbsp;  
-![image](https://user-images.githubusercontent.com/84042456/117987145-82458000-b33a-11eb-99d4-1e3573a14276.png)  
 
-&nbsp;
-&nbsp;
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#quick-description">Quick Description</a></li>
+        <li><a href="#background/motivation">Background/motivation</a></li>
+        <li><a href="#workflow-summary">Workflow Summary</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+      <ul>
+        <li><a href="#prerequisites">Prerequisites</a></li>
+        <li><a href="#installation">Installation</a></li>
+      </ul>
+    </li>
+    <li><a href="#usage">Usage</a></li>
+    <li><a href="#acknowledgments">Acknowledgments</a></li>
+  </ol>
+</details>
 
-## Methods: Coloc vs SMR vs eQTpLot  
-&nbsp;
+
+
+<!-- ABOUT THE PROJECT -->
+## About The Project
+
+[![Project Screen Shot][project-screenshot]]
+
+### Quick Description
+
+The goal for this project was to develop a pipeline for colocalization analysis.
+
+### Background/motivation
+
+Colocalization is an analysis to test if the effect size of a SNP on the phenotype is mediated by **gene expression. This tool can be used to prioritize genes underlying GWAS hits and decode non-coding variant associations. Colocalization integrates eQTL data to determine if a non-coding variant nominated through GWAS 'colocalizes' with a known eQTL, suggesting a potential causal mechanism for that variant. This workflow serves as an example for how to use and format summary statistics and eQTL data for colocalization and visualization.     
+
+### Workflow Summary
+
+1. Download/identify your desired GWAS summary statistics and eQTL data
+2. Use prepping_and_running_coloc.r to format and perform colocalization
+3. Use eQTpLot for visualization of colocalization
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- GETTING STARTED -->
+## Getting Started
+
+### Prerequisites
+
+* [coloc](https://cran.r-project.org/web/packages/coloc/index.html) 
+* [eQTpLot](https://biodatamining.biomedcentral.com/articles/10.1186/s13040-021-00267-6)
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/ipdgc/Colocalization-Pipeline.git
+   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+
+These R scripts contain examples of how to perform colocalization with eQTL data from eQTLGen and Parkinson's Disease summary statistics from Nalls et al 2019, but by changing the file paths you can use these scripts for any eQTL data and GWAS summary statistics.
 
 * Coloc  
     1. Assumes a single causal variant  
-    2. Reduced power in the presence of multiple causal variants  
-* SMR  
-    1. Integrates eQTL results to determine target genes of complex trait-associated GWAS loci  
-    2. Derives an approximate X2-statistic for the mediating effect of the target gene expression on the phenotype  
+    2. Reduced power in the presence of multiple causal variants    
 * eQTpLot
     1. Visualization of colocalization between eQTL and GWAS data  
     2. Comprehensive plots of colocalization between GWAS and eQTL signals and correlation between GWAS and eQTL p-values
-    It provides visual information of effect size, direction of the effect, and distinguishes between congrous and incongrous effects
+    3. It provides visual information of effect size, direction of the effect, and distinguishes between congrous and incongrous effects
 
-![image](https://www.biorxiv.org/content/biorxiv/early/2021/02/15/2020.08.26.268268/F1.large.jpg)
+_For more examples, please refer to eQTpLot [documentation](https://biodatamining.biomedcentral.com/articles/10.1186/s13040-021-00267-6) and coloc  [documentation](https://github.com/chr1swallace/coloc)_
 
-&nbsp;
-&nbsp;
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Links to tools we used/will use
-* 1.  https://www.eqtlgen.org/  
-* 2. https://pubmed.ncbi.nlm.nih.gov/31701892/ (Identification of novel risk loci, causal insights, and heritable risk for Parkinson's disease: a meta-analysis of genome-wide association studies - PubMed)  
-* 3. https://github.com/chr1swallace/coloc (Repo for the R package coloc)  
 
-&nbsp;
-&nbsp;
+<!-- ACKNOWLEDGMENTS -->
+## Acknowledgments
 
-## Problems so far
+* [eQTLGen](https://www.eqtlgen.org/)
+* [Nalls et al. 2019[(https://pubmed.ncbi.nlm.nih.gov/31701892/)
 
-* 1. Couldn't load cloud environment (error)
-* 2. CPU issues where kernel error would generate if CPU wasn't high enough, but when increased we would not have the running cloud environment
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[project-screenshot]: images/project_screenshot.png
