@@ -46,7 +46,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Project Screen Shot][project-screenshot]]
+![Project Screen Shot][project-screenshot]
 
 ### Quick Description
 
@@ -104,7 +104,7 @@ _For more examples, please refer to eQTpLot [documentation](https://biodataminin
 ## Acknowledgments
 
 * [eQTLGen](https://www.eqtlgen.org/)
-* [Nalls et al. 2019[(https://pubmed.ncbi.nlm.nih.gov/31701892/)
+* [Nalls et al. 2019](https://pubmed.ncbi.nlm.nih.gov/31701892/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
