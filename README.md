@@ -88,12 +88,12 @@ Colocalization is an analysis to test if the effect size of a SNP on the phenoty
 These R scripts contain examples of how to perform colocalization with eQTL data from eQTLGen and Parkinson's Disease summary statistics from Nalls et al 2019, but by changing the file paths you can use these scripts for any eQTL data and GWAS summary statistics.
 
 ### 1. Prep and run colocalization with prepping_and_running_coloc.r  
-    1. Assumes a single causal variant  
-    2. Reduced power in the presence of multiple causal variants    
+* Assumes a single causal variant  
+* Reduced power in the presence of multiple causal variants    
 ### 2. Visualize colocalization with eQTpLot
-    1. Visualization of colocalization between eQTL and GWAS data  
-    2. Comprehensive plots of colocalization between GWAS and eQTL signals and correlation between GWAS and eQTL p-values
-    3. It provides visual information of effect size, direction of the effect, and distinguishes between congrous and incongrous effects
+* Visualization of colocalization between eQTL and GWAS data  
+* Comprehensive plots of colocalization between GWAS and eQTL signals and correlation between GWAS and eQTL p-values
+* It provides visual information of effect size, direction of the effect, and distinguishes between congrous and incongrous effects
 
 _For more examples, please refer to eQTpLot [documentation](https://biodatamining.biomedcentral.com/articles/10.1186/s13040-021-00267-6) and coloc  [documentation](https://github.com/chr1swallace/coloc)_
 
